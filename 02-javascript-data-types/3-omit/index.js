@@ -6,7 +6,7 @@
  */
 export const omit = (obj, ...fields) => {
     const fieldsArr = [...fields];
-    let newObj = {};
+    const newObj = {};
         
     for (const [key, value] of Object.entries(obj)) {
         if (!fieldsArr.includes(key)) {
@@ -15,4 +15,4 @@ export const omit = (obj, ...fields) => {
     }
 
     return newObj;
-}
+};

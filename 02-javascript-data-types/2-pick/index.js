@@ -1,5 +1,3 @@
-/* eslint-disable semi */
-/* eslint-disable indent */
 /**
  * pick - Creates an object composed of the picked object properties:
  * @param {object} obj - the source object
@@ -17,4 +15,4 @@ export const pick = (obj, ...fields) => {
     }
 
     return newObj;
-}
+};

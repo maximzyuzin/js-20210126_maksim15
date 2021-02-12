@@ -106,7 +106,16 @@ export default class SortableTable {
         const dataSort = [...this.data].sort((string1, string2) =>
             formulaSort(string1[fieldValue], string2[fieldValue]) * direction);
 
-        this.subElements.body.innerHTML = this.getBody(dataSort);        
+        this.subElements.body.innerHTML = this.getBody(dataSort);
+
+        // На заголовок столбца (header), по которому проходит сортировка,
+        // добавляется в атрибут data-order="" значение сортировки - asc или desc
+        const columns = this.subElements.header.querySelectorAll('[data-order]');
+
+        for (const column of columns) {
+            if (column.dataset.id === header.id) column.dataset.order = orderValue;
+            else column.dataset.order = '';
+        }
     }
 
     remove() {
@@ -115,5 +124,6 @@ export default class SortableTable {
 
     destroy() {
         this.remove();
+        this.subElements = {};
     }
 }
